@@ -1,0 +1,45 @@
+.jumbotron {
+  background-color: black;
+  background-size: contain;
+  background-position: left;
+  background-repeat: no-repeat;
+  height: 570px;
+}
+
+.container {
+  background-color: gray;
+  opacity: 0.9;
+  margin-top: -30px;
+  text-align: center;
+}
+
+.row .col-md-12 {
+  text-align: center;
+  background-size: 200px;
+}
+
+h1 {
+  color: black;
+  font-family: Helvetica;
+}
+
+h5 {
+  color: white;
+}
+
+h2,
+p,
+ul,
+li {
+  font-family: sans-serif;
+}
+
+.card1 {
+  background-color: #e8ecef;
+  opacity: 0.9;
+}
+
+img {
+  margin-top: 20px;
+  padding-bottom: 3px;
+}
