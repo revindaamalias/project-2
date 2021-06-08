@@ -1,44 +1,31 @@
-import { Component } from "react";
-import { Link, Route, Switch } from "react-router-dom";
-import Keranjang from "./Keranjang";
-import Product from "./Product";
-import Home from "./Home";
-import About from "./About";
-import Navigation from "./Navigation";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-// function App() {
-//   useEffect(() => {
-
-//   }, []);
-
-//   return <div className='App'>My App</div>;
-// }
-
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Navigation />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/product">
-            <Product />
-          </Route>
-          <Route path="/keranjang">
-            <Keranjang />
-          </Route>
-        </Switch>
-      </div>
-    );
-  }
+function App(props) {
+  const { isAuthenticated, isVerifying } = props;
+  return (
+    <Switch>
+     <ProtectedRoute
+        exact
+        path="/"
+        component={Home}
+        isAuthenticated={isAuthenticated}
+        isVerifying={isVerifying}
+      />
+      <Route path="/login" component={Login} />
+    </Switch>
+  );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+    isVerifying: state.auth.isVerifying
+  };
+}
+
+export default connect(mapStateToProps)(App);

@@ -5,11 +5,17 @@ import { Card } from "react-bootstrap";
 import { ListGroup } from "react-bootstrap";
 import { ListGroupItem } from "react-bootstrap";
 
+// import Keranjang from "./Keranjang";
+// import Product from "./Product";
+// import Home from "./Home";
+// // import About from "./About";
+// import Navigation from "./Navigation";
+
 const About = () => {
   return (
     <div className="bg d-flex justify-content-center">
       <Card style={{ width: "24rem" }} className="card mt-4 mb-4">
-        <Card.Img variant="top" src="/images/revindaamalias.JPG" />
+        <Card.Img variant="top" src="revindaamalias.JPG" />
         <Card.Body style={{ textAlign: "center" }}>
           <Card.Title>Middle Exam - Washing Machine</Card.Title>
         </Card.Body>

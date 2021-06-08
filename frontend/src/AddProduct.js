@@ -7,7 +7,7 @@ class AddProduct extends Component {
     super(props);
 
     this.state = {
-      listProduk: [],
+      listProduk: []
     };
   }
 
@@ -50,6 +50,7 @@ class AddProduct extends Component {
     let harga = this.refs.hargaProduk.value;
     let stok = this.refs.stokProduk.value;
     let id = this.refs.id.value;
+    let status = true;
 
     if (id && nama && img && harga && stok) {
       const { listProduk } = this.state;
@@ -61,11 +62,12 @@ class AddProduct extends Component {
       listProduk[indeksProduk].img = img;
       listProduk[indeksProduk].harga = harga;
       listProduk[indeksProduk].stok = stok;
+      listProduk[indeksProduk].status = status;
       this.setState({ listProduk });
     } else if (nama && img && harga && stok) {
       const id = new Date().getTime().toString();
       const { listProduk } = this.state;
-      listProduk.push({ id, nama, img, harga, stok });
+      listProduk.push({ id, nama, img, harga, stok, status });
       this.setState({ listProduk });
     }
     this.refs.namaProduk.value = "";
@@ -81,7 +83,7 @@ class AddProduct extends Component {
         <div className="form pb-2 border-bottom">
           <div className="form-group row">
             <label htmlFor="nama" className="col-sm-2 col-form-label">
-              Name
+              Nama
             </label>
             <div className="col-sm-10">
               <input
@@ -90,13 +92,13 @@ class AddProduct extends Component {
                 id="nama"
                 name="nama"
                 ref="namaProduk"
-                placeholder="Input name's product"
+                placeholder="Masukkkan nama produk..."
               />
             </div>
           </div>
           <div className="form-group row">
             <label htmlFor="img" className="col-sm-2 col-form-label">
-              Photo
+              Gambar
             </label>
             <div className="col-sm-10">
               <textarea
@@ -105,13 +107,13 @@ class AddProduct extends Component {
                 name="img"
                 rows="3"
                 ref="imgProduk"
-                placeholder="Input link photo"
+                placeholder="Masukkan Link gambar..."
               ></textarea>
             </div>
           </div>
           <div className="form-group row">
             <label htmlFor="harga" className="col-sm-2 col-form-label">
-              Price
+              Harga
             </label>
             <div className="col-sm-10">
               <input
@@ -120,13 +122,13 @@ class AddProduct extends Component {
                 id="harga"
                 name="harga"
                 ref="hargaProduk"
-                placeholder="Input price"
+                placeholder="Masukkan harga produk..."
               />
             </div>
           </div>
           <div className="form-group row">
             <label htmlFor="stok" className="col-sm-2 col-form-label">
-              Stock
+              Stok
             </label>
             <div className="col-sm-10">
               <input
@@ -135,7 +137,7 @@ class AddProduct extends Component {
                 id="stok"
                 name="stok"
                 ref="stokProduk"
-                placeholder="Input stock product"
+                placeholder="Masukkan stok produk..."
               />
             </div>
           </div>
@@ -145,17 +147,17 @@ class AddProduct extends Component {
             className="btn btn-primary btn-block"
             onClick={this.handleTombolSimpan}
           >
-            Submit
+            Simpan
           </button>
         </div>
-        <h2 className="text-center my-5">List Product</h2>
+        <h2 className="text-center my-5">Daftar Produk</h2>
         <div className="table-responsive">
           <table className="table table-striped">
             <thead>
               <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Stock</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Harga</th>
+                <th scope="col">Stok</th>
                 <th scope="col">Handle</th>
               </tr>
             </thead>
